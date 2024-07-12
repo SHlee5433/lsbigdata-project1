@@ -27,3 +27,138 @@ b=a.copy()
 a[1]=4
 a
 b
+
+
+
+# 수학함수
+import math
+x=4
+math.sqrt(x)
+
+exp_val = math.exp(5)
+exp_val
+
+
+def my_nomal_pdf(x, mu, sigma):
+  part_1 = 1/(sigma * math.sqrt(2 * math.pi))
+  part_2 = math.exp((-(x-mu)**2) / (2*sigma**2))
+  return part_1 * part_2
+
+
+my_nomal_pdf(3, 3, 1)
+
+x = 2
+y = 9
+z = math.pi / 2
+
+def my_f(x, y, z):
+  result = (x ** 2 + math.sqrt(y) + math.sin(z)) * math.exp(x)
+print("계산된 수식 값은:", result)
+
+
+def my_g(x):
+  return math.cos(x) + math.sin(x) * math.exp(x)
+  
+my_g(math.pi)
+
+# Ctrl + Shift + c : 커멘트 처리
+# !pip install numpy
+import pandas as pd
+import numpy as np
+
+# 벡터 생성하기 예제
+
+import numpy as np
+
+a = np.array([1, 2, 3, 4, 5]) # 숫자형 벡터 생성
+b = np.array(["apple", "banana", "orange"]) # 문자형 벡터 생성
+c = np.array([True, False, True, True]) # 논리형 벡터 생성
+print("Numeric Vector:", a)
+print("String Vector:", b)
+print("Boolean Vector:", c)
+
+type(a)
+
+a[3]
+a[2:]
+a[1:4]     
+
+
+
+
+b = np.empty(3)
+b
+b[0]=1
+b[1]=4
+b[2]=10
+b
+b[2]
+
+vec1=np.array([1, 2, 3, 4, 5])
+vec1=np.arange(100)
+vec1 = np.arange(1,100.1, 0.5)
+vec1
+
+l_space1 = np.linspace(1, 100, 100)
+l_space1
+
+# -100 부터 0까지
+vec2=np.arange(0, -100, -1)
+vec3=-np.arange(0, 100)
+vec3
+
+linear_space2 = np.linspace(0, 1, 5, endpoint=False)
+linear_space2                        
+?np.linspace
+
+# repeat vs. tile
+vec1 = np.arange(5)
+np.repeat(vec1,3)
+np.tile(vec1,3)
+
+vec1=np.array([1, 2, 3, 4])
+vec1 + vec1
+
+max(vec1)
+sum(vec1)
+# 35672 이하 홀수들의 합은?
+
+sum(np.arange(1, 35672, 2))
+x=np.arange(1,35673,2)
+
+
+len(x)
+x.shape
+
+
+
+[[1, 2, 3],[4, 5, 6]]
+
+
+b = np.array([[1, 2, 3],[4, 5, 6]])
+
+length = len(b) # 첫 번째 차원의 길이
+length
+shape = b.shape # 각 차원의 크기
+shape
+size = b.size # 전체 요소의 개수
+size
+
+a=np.array([1, 2])
+b=np.array([1, 2, 3, 4])
+a + b
+
+np.tile(a, 2) + b
+np.repeat(a, 2) +b
+
+b == 3
+
+# 35672 보다 작은  수 중에서 7로 나눠서 나머지가 3인 숫자들의 갯수?
+sum(np.arange(1, 35672) % 7 == 3)
+
+
+# 10 보다 작은  수 중에서 7로 나눠서 나머지가 3인 숫자들의 갯수?
+sum(np.arange(1, 10) % 7 == 3)
+
+
+h

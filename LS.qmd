@@ -1,0 +1,137 @@
+---
+title: "Untitled"
+format: html
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this 
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+
+# 제목 1
+## 제목 2
+### 제목 3
+#### 제목 4
+
+**굵은 텍스트**
+__굵은 텍스트__
+
+*이탤릭 텍스트*
+_기울임 텍스트_
+
+~~취소선 텍스트~~
+
+#### 순서가 있는 리스트 ####
+1. 항목1
+2. 항목2
+3. 항목3
+
+
+#### 순서가 없는 리스트 ####
+- 항목 1
+- 항목 2
+- 항목 3
+
+[슬기로운 통계생활](https://courses.statisticsplaybook.com/courses/ls/lectures/55151473)
+
+### 파이썬 코드 청크
+
+파이썬 코드 청크는 다음과 같은 단축기를 통해서 넣을 수 있음.
+
+* 단축기: `Ctrl + Alt + I`
+
+## 코드 청크 종류
+
+2가지 종류가 있음
+
+1. 인라인 코드청크 : 백틱(`) 하나로 묶음
+2. 디스플레이 코드청크 : 백틱(```) 세 개로 묶음음
+
+### 실행가능한 코드청크
+
+백틱 뒤에 `{python}` 을 붙여주면 됨.
+
+```{python}
+1 + 1
+```
+
+## 코드 청크 실행 옵션
+
+옵션은 `#|` 시작함.
+
+* `echo` 옵션 : 코드를 문서에 보여줌
+* `eval` 옵션 : 코드를 돌릴 것인가, 그냥 둘것인가를 결정
+
+```{python}
+#| echo: true
+#| eval: true
+1 + 1
+```
+
+
+## 각주
+
+이것은 간단한 각주[^1]입니다.
+이것은 간단한 각주[^2]입니다.
+이것은 간단한 각주[^3]입니다.
+이것은 간단한 각주[^4]입니다.
+
+[^1]: 이것은 참조된 텍스트입니다.
+[^2]: 이것은 참조된 텍스트입니다.
+[^3]: 이것은 참조된 텍스트입니다.
+[^4]: 이것은 참조된 텍스트입니다.
+
+## 취소선, 굵게, 이탤릭
+
+**굵게**는 별표 두개로 감싸기
+*기울기*는 별표 하나로 감싸기
+~~취소선~~는 물결 두개로 감싸기
+
+## 체크박스
+
+### 해야 할 일들
+
+- [x] ~~화분 물 주기~~
+- [-] 우편함 확인
+- [ ] 밀린 일기 작성
+
+## 이미지 넣는 법
+
+이미지는 다음과 같은 문법을 통해서 넣을 수 있습니다.
+
+```
+![](이미지 주소)
+```
+
+
+![위키피디아 흑요석](./img/img1.jpg)
+
+## 수식 입력 방법
+
+* 인라인 수식: $ 하나로 감싸준다. (본문에 입력)
+* 디스플레이 수식: $ 두개로 감싸준다. (독립적인 문단)
+
+문장 안에 숫자 $5^2$를 넣어보자.
+
+여러 숫자들을 따로 떼어 표시하자.
+
+$$
+\sqrt2
+$$
