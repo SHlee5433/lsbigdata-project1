@@ -160,5 +160,30 @@ sum(np.arange(1, 35672) % 7 == 3)
 # 10 보다 작은  수 중에서 7로 나눠서 나머지가 3인 숫자들의 갯수?
 sum(np.arange(1, 10) % 7 == 3)
 
+a = np.array([1.0, 2.0, 3.0])
+b = 2.0
+a * b
 
-h
+a.shape
+b.shape
+
+# 2차원 배열 생성
+matrix = np.array([[ 0.0, 0.0, 0.0],
+                  [10.0, 10.0, 10.0],
+                  [20.0, 20.0, 20.0],
+                  [30.0, 30.0, 30.0]])
+ 
+ 
+matrix.shape
+# 1차원 배열 생성
+vector = np.array([1.0, 2.0, 3.0, 4.0])
+vector.shape
+# 브로드캐스팅을 이용한 배열 덧셈
+result = matrix + vector
+print("브로드캐스팅 결과:\n", result)
+
+vector = np.array([1.0, 2.0, 3.0, 4.0]).reshape(4, 1)
+vector
+vector.shape
+result = matrix + vector
+result
