@@ -1,189 +1,191 @@
-a=(1,2,3) # a=1,2,3
-a
-
-a=[1,2,3]
-a
-
-#soft copy
-b = a
-b
-
-a[1]=4
-a
-
-b
-id(a)
-id(b)
-
-# deep copy
-a=[1,2,3]
-a
-
-id(a)
-
-b=a[:]
-b=a.copy()
-
-a[1]=4
-a
-b
-
-
-
-# 수학함수
-import math
-x=4
-math.sqrt(x)
-
-exp_val = math.exp(5)
-exp_val
-
-
-def my_nomal_pdf(x, mu, sigma):
-  part_1 = 1/(sigma * math.sqrt(2 * math.pi))
-  part_2 = math.exp((-(x-mu)**2) / (2*sigma**2))
-  return part_1 * part_2
-
-
-my_nomal_pdf(3, 3, 1)
-
-x = 2
-y = 9
-z = math.pi / 2
-
-def my_f(x, y, z):
-  result = (x ** 2 + math.sqrt(y) + math.sin(z)) * math.exp(x)
-print("계산된 수식 값은:", result)
-
-
-def my_g(x):
-  return math.cos(x) + math.sin(x) * math.exp(x)
-  
-my_g(math.pi)
-
-# Ctrl + Shift + c : 커멘트 처리
-# !pip install numpy
-import pandas as pd
 import numpy as np
 
-# 벡터 생성하기 예제
+# 벡터 슬라이싱 예제, a를 랜덤하게 채움
+np.random.seed(2024)
 
-import numpy as np
+a = np.random.randint(1, 21, 10)
+print(a)
 
-a = np.array([1, 2, 3, 4, 5]) # 숫자형 벡터 생성
-b = np.array(["apple", "banana", "orange"]) # 문자형 벡터 생성
-c = np.array([True, False, True, True]) # 논리형 벡터 생성
-print("Numeric Vector:", a)
-print("String Vector:", b)
-print("Boolean Vector:", c)
+# 두 번째 값 추출
+print(a[1])
 
-type(a)
+a[::2]
+a[-2] # 맨 끝에서 두번째
+a[0:6:2]
 
-a[3]
-a[2:]
-a[1:4]     
+# 1에서부터 1000사이 3의 배수의 합은?
+sum(np.arange(3, 1001, 3))
+x = np.arange(3, 1001)
+sum(x[::3])
+
+print(a[[0, 2, 4]])
+
+np.delete(a, [1, 3])
+
+a > 3
+a[a > 3]
 
 
+print(b)
+
+np.random.seed(2024)
+a = np.random.randint(1, 10000, 5)
+# a[조건을 만족하는 논리형벡터]
+a[(a > 2000) & (a < 5000)]
+
+# !pip install pydataset
+import pydataset
+
+df=pydataset.data('mtcars')
+np_df=np.array(df['mpg'])
+
+model_names = np.array(df.index)
+
+# 15 이상 25이하인 데이터 개수는?
+sum((np_df >= 15) & (np_df <= 25))
+
+# 15 이상 20이하인 자동차 모델은?
+model_names[(np_df >= 15) & (np_df <= 20)]
 
 
-b = np.empty(3)
+# 평균 mpg 보다 높은(이상) 자동차 모델는?
+model_names[np_df >= np.mean(np_df)]
+
+# 평균 mpg 보다 낮은(미만) 자동차 모델는?
+model_names[np_df < np.mean(np_df)]
+
+# 15 작거나 22이상인 데이터 개수는?
+sum((np_df < 15) | (np_df >= 22))
+
+
+np.random.seed(2024)
+a = np.random.randint(1, 10000, 5)
+b = np.array(["A", "B", "C", "F", "W"])
+# a[조건을 만족하는 논리형벡터]
+a[(a > 2000) & (a < 5000)]
+b[(a > 2000) & (a < 5000)]
+
+a[a > 3000] = 3000
+a
+
+np.random.seed(2024)
+a = np.random.randint(1, 26346, 1000)
+a
+
+# 처음으로 22000보다 큰 숫자 나왔을때,
+# 숫자 위치와 그 숫자는 무엇인가요?
+x=np.where(a > 22000)
+type(x)
+my_index = x[0][0]
+a[my_index]
+
+# 처음으로 10000보다 큰 숫자들 중
+# 50번째로 나오는 숫자 위치와 그 숫자는 무엇인가요?
+x=np.where(a > 10000)
+a[x[0][49]]
+
+# 500보다 작은 숫자들 중
+# 가장 마지막으로 나오는 숫자 위치와 그 숫자는 무엇인가요?
+x=np.where(a < 500)
+a[x[0][-1]]
+
+
+a = np.array([20, np.nan, 13, 24, 309])
+np.isnan(a)
+a + 3
+np.nan + 3
+np.mean(a)
+np.nanmean(a)
+np.nan_to_num(a, nan = 0)
+
+False
+a = None
+b = np.nan
 b
-b[0]=1
-b[1]=4
-b[2]=10
-b
-b[2]
+a
+b + 1
+a + 1
 
-vec1=np.array([1, 2, 3, 4, 5])
-vec1=np.arange(100)
-vec1 = np.arange(1,100.1, 0.5)
+~np.isnan(a)
+a_filtered = a[~np.isnan(a)]
+a_filtered
+
+
+str_vec = np.array(["사과", "배", "수박", "참외"])
+str_vec
+str_vec[[0, 2]]
+
+mix_vec = np.array(["사과", 12, "수박", "참외"], dtype=str)
+mix_vec
+
+combined_vec = np.concatenate([str_vec, mix_vec])
+combined_vec
+
+col_stacked = np.column_stack((np.arange(1, 5), 
+                               np.arange(12, 16)))
+col_stacked
+
+row_stacked = np.vstack((np.arange(1, 5), 
+                         np.arange(12, 16)))
+row_stacked
+
+
+uneven_stacked = np.column_stack((np.arange(1, 5), 
+                                  np.arange(12, 18)))
+uneven_stacked
+
+
+vec1 = np.arange(1, 5)
+vec2 = np.arange(12, 18)
+
+np.resize(vec1, len(vec2))
+vec1 = np.resize(vec1, len(vec2))
 vec1
 
-l_space1 = np.linspace(1, 100, 100)
-l_space1
 
-# -100 부터 0까지
-vec2=np.arange(0, -100, -1)
-vec3=-np.arange(0, 100)
-vec3
-
-linear_space2 = np.linspace(0, 1, 5, endpoint=False)
-linear_space2                        
-?np.linspace
-
-# repeat vs. tile
-vec1 = np.arange(5)
-np.repeat(vec1,3)
-np.tile(vec1,3)
-
-vec1=np.array([1, 2, 3, 4])
-vec1 + vec1
-
-max(vec1)
-sum(vec1)
-# 35672 이하 홀수들의 합은?
-
-sum(np.arange(1, 35672, 2))
-x=np.arange(1,35673,2)
+uneven_stacked = np.column_stack((vec1, vec2))
+uneven_stacked
 
 
-len(x)
-x.shape
+vec1 = np.arange(1, 5)
+vec2 = np.arange(12, 18)
+vec1 = np.resize(vec1, len(vec2))
+vec1
+
+uneven_stacked = np.vstack((vec1, vec2))
+uneven_stacked
+
+# 홀수번째 원소
+a = np.array([12, 21, 35, 48, 5])
+a[0::2]
+a[1::2]
+# a[a % 2 == 1]
+
+# 최대값 찾기
+a = np.array([1, 22, 93, 64, 54])
+a.max()
+
+a = np.array([1, 2, 3, 2, 4, 5, 4, 6])
+a
+np.unique(a)
 
 
+# 원소 번갈아가면서 합치기
+a = np.array([21, 31, 58])
+b = np.array([24, 44, 67])
+a
+b
+# np.array([21, 24, 31, 44, 58, 67])
 
-[[1, 2, 3],[4, 5, 6]]
+x = np.empty(6)
+x
 
+# 홀수
+# x[[0, 2, 4]] = a
+x[0::2] = a
+x
 
-b = np.array([[1, 2, 3],[4, 5, 6]])
-
-length = len(b) # 첫 번째 차원의 길이
-length
-shape = b.shape # 각 차원의 크기
-shape
-size = b.size # 전체 요소의 개수
-size
-
-a=np.array([1, 2])
-b=np.array([1, 2, 3, 4])
-a + b
-
-np.tile(a, 2) + b
-np.repeat(a, 2) +b
-
-b == 3
-
-# 35672 보다 작은  수 중에서 7로 나눠서 나머지가 3인 숫자들의 갯수?
-sum(np.arange(1, 35672) % 7 == 3)
-
-
-# 10 보다 작은  수 중에서 7로 나눠서 나머지가 3인 숫자들의 갯수?
-sum(np.arange(1, 10) % 7 == 3)
-
-a = np.array([1.0, 2.0, 3.0])
-b = 2.0
-a * b
-
-a.shape
-b.shape
-
-# 2차원 배열 생성
-matrix = np.array([[ 0.0, 0.0, 0.0],
-                  [10.0, 10.0, 10.0],
-                  [20.0, 20.0, 20.0],
-                  [30.0, 30.0, 30.0]])
- 
- 
-matrix.shape
-# 1차원 배열 생성
-vector = np.array([1.0, 2.0, 3.0, 4.0])
-vector.shape
-# 브로드캐스팅을 이용한 배열 덧셈
-result = matrix + vector
-print("브로드캐스팅 결과:\n", result)
-
-vector = np.array([1.0, 2.0, 3.0, 4.0]).reshape(4, 1)
-vector
-vector.shape
-result = matrix + vector
-result
+# 짝수
+# x[[1, 3, 5]] = b
+x[1::2] = b
+x
