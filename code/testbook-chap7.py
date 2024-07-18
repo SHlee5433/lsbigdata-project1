@@ -43,8 +43,42 @@ exam.ilocnp.where([exam["english"] >= 90, 3] = 90)[0], 3} # np.where도 튜플�
 exam.iloc[exam["english"] >= 90].index, 3] # index 벡터도 작동
 
 # math 점수 50점 이하 "_" 변경
+exam = pd.read_csv("data/exam.csv")
 exam.loc[exam["math"] <= 50, "math"] = "_"
 exam
 
 # "_" 결측치를 수학점수 평균 바꾸고 싶은 경우
-exam["math"]
+# 1
+math_mean = exam.loc[(exam["math"] != "_"), "math"].mean()
+exam.loc[exam["math"] == "_", "math"] = math_mean
+exam
+
+# 2
+math_mean = exam.query('math not in["_"]')['math'].mean()
+exam.loc[exam["math"] == "_", "math"] = math_mean
+math_mean
+# 3
+math_mean = exam[exam["math"]!= "_"]["math"].mean()
+exam.loc[exam["math"] == "_", "math"] = math_mean
+
+# 4
+exam.loc[exam["math"] == "_", ["math"]] = np.nan
+math_mean = exam["math"].mean()
+exam.loc[pd.isna(exam["math"]), ["math"]] = math_mean
+exam
+
+# 5
+vector = np.array([np.nan if x == "_" else float(x) for x in exam["math"]])
+vector = np.array([float(x) if x != "_" else np.nan for x in exam["math"]])
+exam["math"] = np.where(exam["math"] == "_",math_mean, exam["math"])
+
+# 6
+math_mean = exam[exam["math"] != "_"]["math"].mean()
+exam["math"] = exam["math"].replace("_", math_mean)
+exam
+
+
+a= np.array([7, 20, 15, 11, 8, 7, 19, 11, 11, 4])
+a
+b = a[np.arange(1, 11) % 2 == 1]
+print(b)
