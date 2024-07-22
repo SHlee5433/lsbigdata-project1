@@ -73,12 +73,10 @@ repeated_list
 for x in [4, 1, 2, 3]:
     print(x)
 
-for x in range(5):
-    print(i**2)
 
 
 mylist = []
-mylist.append(2)
+mylist.append(2) # append = 리스트 끝에 원소 추가가
 mylist.append(4)
 mylist.append(6)
 mylist
@@ -97,6 +95,8 @@ mylist
 # [ 0, 0, 0, 0] 만들기
 mylist = [0] * 5
 mylist
+
+mylist = []
 for i in range(1, 11):
     mylist.append(i*2)
 mylist
