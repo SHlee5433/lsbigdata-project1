@@ -14,7 +14,6 @@ plt.grid(False)
 plt.show()
 
 
-
 x = np.random.rand(10000, 5).mean(axis =1)
 x = np.random.rand(50000) \
       .reshape(-1, 5) \

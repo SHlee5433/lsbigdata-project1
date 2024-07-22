@@ -44,5 +44,5 @@ print(os.getcwd())
 
 import pandas as pd
 
-df_exam = pd.read_csv('exam.csv')
+df_exam = pd.read_csv('data / exam.csv')
 df_exam

@@ -95,8 +95,8 @@ b[2]=10
 b
 b[2]
 
-vec1=np.array([1, 2, 3, 4, 5])
-vec1=np.arange(100)
+vec1 = np.array([1, 2, 3, 4, 5])
+vec1 = np.arange(100)
 vec1 = np.arange(1, 100.5, 0.5)
 vec1
 
