@@ -1,0 +1,84 @@
+---
+title: "test"
+format: html
+editor: visual
+jupyter: python3
+---
+
+## 빈도 막대 그래프 그리기
+데이터 불러오기
+
+```{python}
+
+import pandas as pd
+
+mpg = pd.read_csv("../data/mpg.csv")
+mpg
+```
+
+Seaborn 패키지 불러오기
+```{python}
+# !pip install plotly
+import seaborn as sns
+import matplotlib.pyplot as plt
+import plotly.express as px
+
+```
+
+
+### seaborn을 사용한 산점도도
+
+```{python}
+
+sns.scatterplot(data = mpg,
+                x= "displ", y= "hwy",
+                hue = "drv") \
+    .set(xlim=[3,6], ylim=[10, 30])
+```
+
+* plotly를 사용한 산점도 그리기
+
+```{python}
+import plotly.express as px
+
+px.scatter(data_frame = mpg,
+            x = "displ", y = "hwy",
+            color="drv")
+```
+
+
+### "barplot()" 사용하기
+
+데이터 전처리하기기
+```{python}
+
+df_mpg = mpg.groupby("drv", as_index=False) \
+    .agg(mean_hwy = ("hwy", "mean"))
+df_mpg
+
+```
+
+"barplot" 사용해서 그래프 그리기
+
+```{python}
+
+sns.barplot(data=df_mpg.sort_values("mean_hwy"),
+            x = "drv" , y = "mean_hwy",
+            hue = "drv")
+```
+
+
+### "countplot()" 사용하기
+
+```{python}
+
+sns.countplot(data = mpg, x ="drv", hue = "drv")
+```
+
+### 상자 그림 만들기
+
+```{python}
+
+sns.boxplot(data = mpg, x = "drv", y = "hwy")
+
+```

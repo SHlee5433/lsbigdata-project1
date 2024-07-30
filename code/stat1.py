@@ -43,5 +43,6 @@ p = np.array([0.2, 0.5, 0.3])
 Z(p)
 
 
-
+# E[X]
+sum(np.arange(4) * np.array([1, 2, 2, 1])/6)
 
