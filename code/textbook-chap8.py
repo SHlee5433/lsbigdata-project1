@@ -32,7 +32,6 @@ df_mpg
 
 sns.countplot(data = mpg, x ="drv", hue = "drv")
 plt.show()
-<<<<<<< HEAD
 
 
 # 교재 8장, p.212
@@ -92,5 +91,4 @@ plt.scatter(x, my_df["left_ci"], color="blue", s=1)
 plt.scatter(x, my_df["right_ci"], color="blue", s=1)
 plt.show()
 plt.clf()
-=======
->>>>>>> 538e365b24b2cd5f29d69b3d977f3f6d25976a53
+
