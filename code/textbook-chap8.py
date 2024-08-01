@@ -76,7 +76,7 @@ my_df = economics.groupby("year", as_index = False) \
              mon_n=("unemploy", "count")
          )
 my_df 
-mean + 1.96*std/sqrt(12)
+mean +- 1.96*std/sqrt(12)
 my_df["left_ci"] = my_df["mon_mean"] - 1.96 * my_df["mon_std"] / np.sqrt(my_df["mon_n"])
 my_df["right_ci"] = my_df["mon_mean"] + 1.96 * my_df["mon_std"] / np.sqrt(my_df["mon_n"])
 my_df.head()

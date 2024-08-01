@@ -85,3 +85,59 @@ sub_df
 
 sub_df.to_csv("./data/houseprice/sample_submission3.csv", index = False)
 sub_df
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+house_train = pd.read_csv("./data/houseprice/train.csv")
+
+df = house_train.dropna(subset=["MoSold","SalePrice"])\
+                    .groupby("MoSold", as_index = False)\
+                    .agg(count = ("SalePrice","count"))\
+                    .sort_values("MoSold", ascending = True)
+df
+
+sns.barplot(data=df, x="MoSold", y="count", hue="MoSold")
+plt.xlabel("월(month)")
+plt.ylabel("이사횟수(count)")
+plt.show()
+plt.clf() 
+
+
+몇 월에 이사를 가장 많이 갈까까
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+house_train2 = house_train[["YearBuilt", "OverallCond"]]
+
+house_cond = house_train2.groupby("OverallCond", as_index = False)\
+                    .agg(count = ("YearBuilt", "count"))\
+                    .sort_values("count", ascending = False)
+sns.barplot(data = house_cond, x = "OverallCond", y = "count", hue = "OverallCond")
+plt.show()
+plt.clf()
+
+house_train3 = house_train[["BldgType", "OverallCond"]]
+
+house_bed = house_train3.groupby(["OverallCond", "BldgType"], as_index = False)\
+                    .agg(count = ("BldgType", "count"))\
+                    .sort_values("count", ascending = False)
+sns.barplot(data = house_bed, x = "OverallCond", y = "count", hue = "BldgType")
+plt.show()
+plt.clf()
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+df4 = house_train[["SalePrice", "Neighborhood"]]
+
+house_bed = house_train.groupby(["Neighborhood", "SalePrice"], as_index = False)\
+            .agg(region_mean = ("SalePrice", "mean"))\
+            .sort_values("region_mean", ascending = False)
+        
+house_bed
+
+
+df5 = df4["Neighborhood"].unique()
+            
+sns.barplot(data = house_bed, x = "Neighborhood", y = "region_mean", hue = "Neighborhood")
+plt.show()
+plt.clf()

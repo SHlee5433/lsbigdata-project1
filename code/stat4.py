@@ -63,7 +63,7 @@ plt.plot(x_values, pdf_values, color="red", linewidth = 2)
 
 # 표본평균(파란벽돌) 점찍기
 blue_x = uniform.rvs(loc = 2, scale = 4, size =20).mean()
-# norm.ppf(0.975, 0, 1)
+# norm.ppf(0.975, 0, 1) - 상위 5%
 a = blue_x + 1.96
 b = blue_x - 1.96
 plt.scatter(blue_x, 0.002,
