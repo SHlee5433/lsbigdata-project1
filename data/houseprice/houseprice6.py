@@ -2,52 +2,72 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
-from mpl_toolkits.mplot3d import Axes3D
+
 
 # 데이터 로드
 house_train = pd.read_csv("data/houseprice/train.csv")
 house_test = pd.read_csv("data/houseprice/test.csv")
 sub_df = pd.read_csv("./data/houseprice/sample_submission.csv")
 
-# 이상치 제거
-house_train = house_train.query('GrLivArea <= 4500')
+# 이상치 탐색
+# house_train = house_train.query('GrLivArea <= 4500')
 
-# 피처와 타겟 변수 선택
-x = house_train[['GrLivArea', 'GarageArea']]
+
+#숫자형 변수만 선택하기
+x = house_train.select_dtypes(include=[int,float])
+
+# 필요없는 칼럼 제거
+x = x.iloc[:, 1:-1]
+
+# x = house_train[['GrLivArea', 'GarageArea']]
 y = house_train['SalePrice']
+x.isna().sum()
+
+# 결측치 제거 후 채우기
+x["LotFrontage"] = x["LotFrontage"].fillna(house_train["LotFrontage"].mean())
+x["MasVnrArea"] = x["MasVnrArea"].fillna(house_train["MasVnrArea"].mean())
+x["GarageYrBlt"] = x["GarageYrBlt"].fillna(house_train["GarageYrBlt"].mean())
+
+x.isna().sum()
+
+# 선형 회귀 모델 생성
+model = LinearRegression()
 
 # 모델 학습
-model = LinearRegression()
 model.fit(x, y)
 
-# 기울기와 절편 출력
-slope_grlivarea = model.coef_[0]
-slope_garagearea = model.coef_[1]
-intercept = model.intercept_
+# 회귀 직선의 기울기와 절편
+model.coef_      # 기울기 a
+model.intercept_ # 절편 b
 
-print(f"GrLivArea의 기울기 (slope): {slope_grlivarea}")
-print(f"GarageArea의 기울기 (slope): {slope_garagearea}")
-print(f"절편 (intercept): {intercept}")
+test_x = house_test.select_dtypes(include=[int,float])
+test_x = test_x.iloc[:, 1:]
+test_x.isna().sum()
 
-# 3D 그래프 그리기
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+# fill_values = {
+#     "LotFrontage" : test_x["LotFrontage"].mean(),
+#     "MasVnrArea" : test_x["MasVnrArea"].mean(),
+#     "GarageYrBlt" : test_x["GarageYrBlt"].mean()
+# }
 
-# 데이터 포인트
-ax.scatter(x['GrLivArea'], x['GarageArea'], y, color='blue', label='Data points')
+# 결측치 채우기
+# test_x = test_x.fillna(value = fill_values)
+test_x = test_x.fillna(test_x.mean())
 
-# 회귀 평면
-GrLivArea_vals = np.linspace(x['GrLivArea'].min(), x['GrLivArea'].max(), 100)
-GarageArea_vals = np.linspace(x['GarageArea'].min(), x['GarageArea'].max(), 100)
-GrLivArea_vals, GarageArea_vals = np.meshgrid(GrLivArea_vals, GarageArea_vals)
-SalePrice_vals = intercept + slope_grlivarea * GrLivArea_vals + slope_garagearea * GarageArea_vals
 
-ax.plot_surface(GrLivArea_vals, GarageArea_vals, SalePrice_vals, color='red', alpha=0.5)
+# 결측치 확인
+test_x.isna().sum()
 
-# 축 라벨
-ax.set_xlabel('GrLivArea')
-ax.set_ylabel('GarageArea')
-ax.set_zlabel('SalePrice')
+# 테스트 데이터 집값 예측
+pred_y = model.predict(test_x) # test 셋에 대한 집값
+pred_y
 
-plt.legend()
-plt.show()
+
+# SalePrice 바꿔치기 
+sub_df["SalePrice"] = pred_y
+sub_df
+
+# csv 파일로 내보내기
+sub_df.to_csv("./data/houseprice/sample_submission8.csv", index = False)
+sub_df
+

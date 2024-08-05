@@ -142,6 +142,8 @@ plt.legend() # 범례 추가하기기
 plt.show()
 plt.clf()
 
+
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 회귀모델을 통한 집값 예측
 
@@ -184,3 +186,74 @@ plt.ylabel('y')
 plt.legend()
 plt.show()
 plt.clf()
+
+
+test_x =  np.array(house_test["BedroomAbvGr"]).reshape(-1, 1)
+test_x
+
+
+pred_y = model.predict(test_x) # test 셋에 대한 집값
+pred_y
+
+# SalePrice 바꿔치기 
+
+sub_df["SalePrice"] = pred_y * 1000
+sub_df
+
+# csv 파일로 내보내기
+sub_df.to_csv("./data/houseprice/sample_submission5.csv", index = False)
+sub_df
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 옵션 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# y=x^2 + 3의 최소값이 나오는
+def my_f(x) :
+    return x ** 2 + 3
+my_f(3)
+
+import numpy as np
+from scipy.optimize import minimize # 2개 이상 리스트만 받아서 최소 값을 추청
+
+# 초기 추정값
+initial_guess = [0]
+
+# 최소값 찾기
+result = minimize(my_f, initial_guess)
+
+# 결과 출력
+print("최소값:", result.fun)
+print("최소값을 갖는 x 값:", result.x)
+
+# z = x^2 + y^2 + 3
+def my_f2(x) :
+    return x[0] ** 2 + x[1] ** 2 + 3
+
+my_f2([1, 3])
+
+
+# 초기 추정값
+initial_guess = [-10, 3]
+
+# 최소값 찾기
+result = minimize(my_f2, initial_guess)
+
+# 결과 출력
+print("최소값:", result.fun)
+print("최소값을 갖는 x 값:", result.x)
+
+# f(x ,y, z) = (x-1)^2 + (y-2)^2 + (z-4)^2 +7
+def my_f3(x) :
+    return (x[0] -1) ** 2 + (x[1] - 2) ** 2 + (x[2] - 4) ** 2 + 7
+
+my_f3([1, 2, 3])
+
+
+# 초기 추정값
+initial_guess = [-10, 3, 4]
+
+# 최소값 찾기
+result = minimize(my_f3, initial_guess)
+
+# 결과 출력
+print("최소값:", result.fun)
+print("최소값을 갖는 x 값:", result.x)
