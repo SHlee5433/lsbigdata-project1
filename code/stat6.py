@@ -38,11 +38,11 @@ x = np.linspace(0, 100, 400)
 y = model.coef_ * x + model.intercept_
 plt.xlim([0, 100])
 plt.ylim([0, 300])
-plt.plot(x, y, color = "red") # 회귀직선선
+plt.plot(x, y, color = "red") # 회귀직선
 plt.show()
 plt.clf()
 
-!pip install statsmodels
+# !pip install statsmodels
 import statsmodels.api as sm
 
 obs_x = sm.add_constant(obs_x)
