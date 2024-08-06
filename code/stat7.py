@@ -12,10 +12,10 @@ tab1
 tab2 = tab1.assign(gender = ["female"] * 7 + ["male"] * 5)
 tab2
 
- # tab4 = pd.DataFrame({"id" : np.arange(1, 13),
- #                      "score" : tab3['score'],
- #                     "gender" : 
-
+# tab2 = pd.DataFrame({"id" : np.arange(1, 13),
+#                       "score" : tab3['score'],
+#                       "gender" : np.where(tab1["id"].isin(np.arange(1, 8)),"Female", "male")})
+# tab2
 
 # 1 표본 t 검정 (그룹 1개)
 # 귀무가설 vs 대립가설
@@ -29,7 +29,7 @@ t_value = result[0] # t 검정통계랑
 p_value = result[1] # 유의확률 (p_value)
 tab1['score'].mean() # 표본 평균
 result.pvalue
-result.statistic
+result.statistic # t 검정통계량량
 result.df
 # 귀무가설이 참일 때, 11.53이 관찰될 확률이 6.48%이므로,
 # 이것은 우리가 생각하는 보기 힘들다고 판단하는 기준인
@@ -60,11 +60,11 @@ m_tab2 = tab2[tab2["gender"] == "male"]
 #                     alternative = "less", equal_var = True) # alternative는 대립가설을 의미
 
 result = ttest_ind(m_tab2["score"], f_tab2["score"], 
-        alternative = "greater", equal_var = True) # alternative는 대립가설을 의미
+                   alternative = "greater", equal_var = True) # alternative는 대립가설을 의미
 
 result.statistic # 검정통계량
 result.pvalue
-
+result.df
 
 # 대응표본 t 검정 (짝지을 수 있는 표본)
 ## 귀무가설 vs 대립가설
@@ -90,23 +90,27 @@ t_value = result[0] # t 검정통계랑
 p_value = result[1] # 유의확률 (p_value)
 t_value, p_value
 
-# long
+
 # 연습 1
 df = pd.DataFrame({"id" : [1, 2, 3],
                    "A" : [10, 20, 30],
                    "B" : [40, 50, 60]})
 df
+
+# wide to long: melt(), 그래프를 그릴 때 용이
 df_long = df.melt(id_vars = "id",
                   value_vars = ["A", "B"],
                   var_name = "group",
                   value_name = "score")
 df_long
 
+# long to wide : pivot_table(), 사람들이 표를 볼 때 용이
 # aggfunc = "mean" 이 숨어있음
 df_long.pivot_table(
+    index = "id",
     columns = "group",
     values = "score"
-)        
+).reset_index()
 
 # 연습 2
 import seaborn as sns
