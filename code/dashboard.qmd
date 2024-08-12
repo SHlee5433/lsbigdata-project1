@@ -1,9 +1,9 @@
+
 ---
 title: "팔머펭귄 대쉬보드"
 author: "Issac Lee"
 format: 
   dashboard:
-    scrolling: true 
     logo: "penguins-cover.png"
     nav-buttons:
       - icon: github
@@ -12,9 +12,13 @@ format:
 
 # Page 1
 
-여기는 페이지 1 입니다.
+## {.sidebar}
 
-## 첫번째 {height = 60%}
+여기는 사이드바에 대한 내용이 들어갈 곳입니다.
+
+## 칼럼
+
+### 첫번째 {height=60%}
 
 ```{python}
 import pandas as pd
@@ -35,22 +39,15 @@ fig = px.scatter(
 fig.show()
 ```
 
-## 두번째 {height = 40%}
+### 두번째 {height=40%}
 
-### 테스트1 {.tabset}
+#### 테스트1 {.tabset}
 
 ```{python}
-fig = px.scatter(
-    penguins,
-    x="bill_length_mm",
-    y="bill_depth_mm",
-    color="species",
-    # trendline="ols" # p.134
-)
-fig.show()
+from itables import show
+show(penguins, buttons = ['copy', 'excel', 'pdf'])
 ```
 
-### 테스트2
 
 ::: {.card title="My Title"}
 
@@ -62,4 +59,61 @@ fig.show()
 
 # Page 2
 
-테스트
+```{python}
+articles = 100
+comments = 50
+spam_num = 300
+```
+
+## Row 
+
+```{python}
+#| content: valuebox
+#| title: "Articles per day"
+#| icon: pencil
+#| color: primary
+dict(
+  value = articles
+)
+```
+
+```{python}
+#| content: valuebox
+#| title: "Comments per day"
+dict(
+  icon = "chat",
+  color = "primary",
+  value = comments
+)
+```
+
+```{python}
+#| content: valuebox
+#| title: "Spam per day"
+dict(
+  icon = "airplane-engines",
+  color = "#f0330b",
+  value = spam_num
+)
+```
+
+## Row  
+
+```{python}
+import pandas as pd
+import numpy as np
+import plotly.express as px
+from palmerpenguins import load_penguins
+
+penguins = load_penguins()
+# penguins.head()
+
+fig = px.scatter(
+    penguins,
+    x="bill_length_mm",
+    y="bill_depth_mm",
+    color="species",
+    # trendline="ols" # p.134
+)
+fig.show()
+```
