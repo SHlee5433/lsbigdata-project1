@@ -31,6 +31,12 @@ list(range(10))
 squares = [x**2 for x in range(10)]
 squares
 
+list = []
+for i in range(10) :
+    list.append(i ** 2)
+
+list
+
 # 3, 5, 2, 15의 3제곱을 구하라 
 my_squares = [x**3 for x in [3, 5, 2, 15]]
 my_squares
@@ -85,12 +91,7 @@ mylist
 # 채워넣어보세요!
 
 [i for i in range(2, 21, 2)]
-for x in range()
-
-mylist = []
-mylist = list(range(4))
-mylist[0] = 2
-mylist
+for x in range() :
 
 # [ 0, 0, 0, 0] 만들기
 mylist = [0] * 5
@@ -109,6 +110,12 @@ for i in range(10):
     mylist[i] = (i + 1) * 2
 mylist
 
+# 인덱스 공유해서 카피하기
+mylist_b = [2, 4, 6, 80, 10, 12, 24, 35, 23, 20]
+mylist = [0] * 10
+for i in range(10):
+    mylist[i] = mylist_b[i]
+mylist
 
 # 퀴즈: mylist_b의 홀수번째 위치에 있는 숫자들만 mylist에
 # 가져오기

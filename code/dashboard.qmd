@@ -1,0 +1,65 @@
+---
+title: "팔머펭귄 대쉬보드"
+author: "Issac Lee"
+format: 
+  dashboard:
+    scrolling: true 
+    logo: "penguins-cover.png"
+    nav-buttons:
+      - icon: github
+        href: https://github.com/issactoast/lsbigdata-project1/
+---
+
+# Page 1
+
+여기는 페이지 1 입니다.
+
+## 첫번째 {height = 60%}
+
+```{python}
+import pandas as pd
+import numpy as np
+import plotly.express as px
+from palmerpenguins import load_penguins
+
+penguins = load_penguins()
+# penguins.head()
+
+fig = px.scatter(
+    penguins,
+    x="bill_length_mm",
+    y="bill_depth_mm",
+    color="species",
+    # trendline="ols" # p.134
+)
+fig.show()
+```
+
+## 두번째 {height = 40%}
+
+### 테스트1 {.tabset}
+
+```{python}
+fig = px.scatter(
+    penguins,
+    x="bill_length_mm",
+    y="bill_depth_mm",
+    color="species",
+    # trendline="ols" # p.134
+)
+fig.show()
+```
+
+### 테스트2
+
+::: {.card title="My Title"}
+
+카드안에 들어있는 텍스트 입니다.
+
+![팔머펭귄](penguins-cover.png)
+
+:::
+
+# Page 2
+
+테스트
