@@ -1,7 +1,6 @@
-
 ---
 title: "팔머펭귄 대쉬보드"
-author: "Issac Lee"
+author: "SeungHak Lee"
 format: 
   dashboard:
     logo: "penguins-cover.png"
@@ -10,9 +9,10 @@ format:
         href: https://github.com/issactoast/lsbigdata-project1/
 ---
 
+
 # Page 1
 
-## {.sidebar}
+### {.sidebar}
 
 여기는 사이드바에 대한 내용이 들어갈 곳입니다.
 
@@ -34,7 +34,7 @@ fig = px.scatter(
     x="bill_length_mm",
     y="bill_depth_mm",
     color="species",
-    # trendline="ols" # p.134
+    # trendline="ols" # p.134 # 선형회귀 직선 만들기
 )
 fig.show()
 ```
@@ -47,7 +47,6 @@ fig.show()
 from itables import show
 show(penguins, buttons = ['copy', 'excel', 'pdf'])
 ```
-
 
 ::: {.card title="My Title"}
 

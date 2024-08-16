@@ -19,7 +19,7 @@ geo_seoul["features"][2]["properties"]
 
 # 위도, 경도 좌표 출력
 len(geo_seoul["features"][0]["geometry"])
-geo_seoul["features"][0]["geometry"].keys
+geo_seoul["features"][0]["geometry"].keys()
 coordinate_list = geo_seoul["features"][0]["geometry"]["coordinates"]
 len(coordinate_list[0][0])
 coordinate_list[0][0]

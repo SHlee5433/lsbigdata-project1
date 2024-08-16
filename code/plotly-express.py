@@ -17,9 +17,9 @@ fig = px.scatter(penguins, x = "bill_length_mm", y = "bill_depth_mm",
                  color = "species", # trendline = "ols", # p.134
                  ) # p.134
 
-# 제목 크기 키울것,
-# 점 크기 크게,
-# 범례 제목 "펭귄 종"으로 변경
+# 1. 제목 크기 키울것,
+# 2. 점 크기 크게,
+# 3. 범례 제목 "펭귄 종"으로 변경
 ## layout 설정
 fig.update_layout(
     title=dict(text="팔머펭귄 종별 부리 길이 vs. 깊이", font=dict(color="white", size = 24)),
@@ -75,7 +75,7 @@ penguins_dummies = pd.get_dummies(penguins,
                                   columns=['species'],
                                   drop_first=True)
 penguins_dummies.columns
-penguins_dummies.iloc[:,-3:]
+penguins_dummies.iloc[:,-3:] # 뒤 칼럼 3개를 다 가져와라
 
 
 # x와 y 설정
