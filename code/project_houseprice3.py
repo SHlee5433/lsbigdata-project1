@@ -25,7 +25,7 @@ c # 415
 d # 223
 e # 226
 
-
+pd.cut
 
 # Overall_Cond
 
@@ -94,7 +94,7 @@ plt.xticks(range(1, 6, 1))
 plt.yticks(range(10, 15, 1))  
 plt.xlabel("점수")
 plt.ylabel("집값(만)")
-plt.subplots_adjust(left=0.15, bottom=0.13)  # 여백 값은 필요에 맞게 조정 가능
+plt.subplots_adjust(left=0.1, bottom=0.13)  # 여백 값은 필요에 맞게 조정 가능
 plt.show()
 plt.clf()
 
@@ -133,7 +133,7 @@ house_df["Score_Year_Built"]
 
 
 x1 = house_df["Score_Year_Built"]
-y1 = house_df["Sale_Price"]
+y1 = house_df["Sale_Price"] 
 
 # 시각화
 # 빈도 그래프 
@@ -152,8 +152,43 @@ sns.lineplot(x = x1, y = y1, data = house_df, errorbar = None, marker = "o")
 plt.rcParams.update({"font.family" : "Malgun Gothic"})    
 plt.title("10만 ~ 15만 달러 주택의 집값별 건축년도 점수")
 plt.xticks(range(1, 6, 1))
-plt.yticks(range(100000, 150000, 10000))
+plt.yticks(range(10, 15, 1))
 plt.xlabel("점수")
-plt.ylabel("집값")
+plt.ylabel("집값(만)")
+plt.show()
+plt.clf()
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from sklearn.linear_model import LinearRegression
+overall_cond_dommies = pd.get_dummies(
+    house_df["Overall_Cond"],
+    drop_first = True
+    )
+
+overall_cond_dommies
+
+x2 = overall_cond_dommies
+                
+y2 = house_df["Sale_Price"]
+
+# 선형 회귀 모델 생성
+model = LinearRegression()
+
+# 모델 학습
+model.fit(x2, y2) # 자동으로 기울기, 절편 값을 구해줌 
+
+# 시각화
+# 회귀 직선의 기울기와 절편
+model.coef_      # 기울기 a
+model.intercept_ # 절편 b
+
+pred_y = model.predict(x2)
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.scatterplot(x = x["bill_length_mm"], y = y, size = 3,
+                hue = penguins["species"], palette = "deep",
+                legend = False)
+sns.scatterplot(x = x["bill_length_mm"], y = pred_y,
+                color = "black")
 plt.show()
 plt.clf()

@@ -22,10 +22,11 @@ fig = go.Figure(
          "marker": {"color": "red"}
          }
 )
+
 fig.show()
 
 # p.26 마진 변수 설정
-margins_P = {"l": 25, "r": 25, "t": 50, "b": 50}
+ margins_P = {"l": 25, "r": 25, "t": 50, "b": 50}
 fig = go.Figure(
     data = [
         {
@@ -50,6 +51,7 @@ fig = go.Figure(
         "margin": margins_P
     }
 )
+
 fig.show()
 
 # 프레임속성을 이용한 애니메이션

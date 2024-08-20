@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_529b85d2053da66e491d0ac8591e09c7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_529b85d2053da66e491d0ac8591e09c7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_529b85d2053da66e491d0ac8591e09c7 = L.map(
+                "map_529b85d2053da66e491d0ac8591e09c7",
+                {
+                    center: [42.027901799999995, -93.6550491],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_52bd1cdc39f0205043867b55cd3ae947 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_52bd1cdc39f0205043867b55cd3ae947.addTo(map_529b85d2053da66e491d0ac8591e09c7);
+        
+    
+            var circle_marker_605897d2c11a1361796c37e3facf5f8c = L.circleMarker(
+                [42.054514, -93.64396],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_529b85d2053da66e491d0ac8591e09c7);
+        
+    
+        var popup_8b5e9ab6953d94a1ab7cfbb1cc705bff = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0e2bfdcf9691c1811b1bb9413ed9b73a = $(`<div id="html_0e2bfdcf9691c1811b1bb9413ed9b73a" style="width: 100.0%; height: 100.0%;">Neighborhood: Somerset<br>Sale Price: $147,000<br>Total Score: 4.60</div>`)[0];
+                popup_8b5e9ab6953d94a1ab7cfbb1cc705bff.setContent(html_0e2bfdcf9691c1811b1bb9413ed9b73a);
+            
+        
+
+        circle_marker_605897d2c11a1361796c37e3facf5f8c.bindPopup(popup_8b5e9ab6953d94a1ab7cfbb1cc705bff)
+        ;
+
+        
+    
+    
+            var circle_marker_495ff3affce7adb7e676ae7e9a4c6a54 = L.circleMarker(
+                [42.018812, -93.670039],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_529b85d2053da66e491d0ac8591e09c7);
+        
+    
+        var popup_89c896a10f3fa40c5d3790af8cc00c7c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9e7e9e383f1f053d73af107a81153f61 = $(`<div id="html_9e7e9e383f1f053d73af107a81153f61" style="width: 100.0%; height: 100.0%;">Neighborhood: Edwards<br>Sale Price: $130,000<br>Total Score: 4.20</div>`)[0];
+                popup_89c896a10f3fa40c5d3790af8cc00c7c.setContent(html_9e7e9e383f1f053d73af107a81153f61);
+            
+        
+
+        circle_marker_495ff3affce7adb7e676ae7e9a4c6a54.bindPopup(popup_89c896a10f3fa40c5d3790af8cc00c7c)
+        ;
+
+        
+    
+    
+            var circle_marker_b6a08b31c667a8ea223b6a6fee9b54ea = L.circleMarker(
+                [42.01881, -93.669985],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_529b85d2053da66e491d0ac8591e09c7);
+        
+    
+        var popup_be573c4715e4bd91d41903b0e2f68224 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7621dba58913a34dfc806e99653226fc = $(`<div id="html_7621dba58913a34dfc806e99653226fc" style="width: 100.0%; height: 100.0%;">Neighborhood: Edwards<br>Sale Price: $130,000<br>Total Score: 4.20</div>`)[0];
+                popup_be573c4715e4bd91d41903b0e2f68224.setContent(html_7621dba58913a34dfc806e99653226fc);
+            
+        
+
+        circle_marker_b6a08b31c667a8ea223b6a6fee9b54ea.bindPopup(popup_be573c4715e4bd91d41903b0e2f68224)
+        ;
+
+        
+    
+    
+            var circle_marker_470424e47f51da961be05b3e23fb6b2b = L.circleMarker(
+                [42.01881, -93.66996],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_529b85d2053da66e491d0ac8591e09c7);
+        
+    
+        var popup_eaf88e01631734ba74a484ecfc4cb347 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9d112cdd11e30d3934ab0a0ccd5a4b1a = $(`<div id="html_9d112cdd11e30d3934ab0a0ccd5a4b1a" style="width: 100.0%; height: 100.0%;">Neighborhood: Edwards<br>Sale Price: $137,500<br>Total Score: 4.20</div>`)[0];
+                popup_eaf88e01631734ba74a484ecfc4cb347.setContent(html_9d112cdd11e30d3934ab0a0ccd5a4b1a);
+            
+        
+
+        circle_marker_470424e47f51da961be05b3e23fb6b2b.bindPopup(popup_eaf88e01631734ba74a484ecfc4cb347)
+        ;
+
+        
+    
+    
+            var circle_marker_84fe2f460bec96ddd0a66dd672e0968d = L.circleMarker(
+                [42.018813, -93.670063],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_529b85d2053da66e491d0ac8591e09c7);
+        
+    
+        var popup_83a58c7a55187b5da8eab2484b702cfc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_98200b5f2ec77363812144b0a40fd0ac = $(`<div id="html_98200b5f2ec77363812144b0a40fd0ac" style="width: 100.0%; height: 100.0%;">Neighborhood: Edwards<br>Sale Price: $134,000<br>Total Score: 4.20</div>`)[0];
+                popup_83a58c7a55187b5da8eab2484b702cfc.setContent(html_98200b5f2ec77363812144b0a40fd0ac);
+            
+        
+
+        circle_marker_84fe2f460bec96ddd0a66dd672e0968d.bindPopup(popup_83a58c7a55187b5da8eab2484b702cfc)
+        ;
+
+        
+    
+    
+            var circle_marker_ff05d470cfd1eaff910c5c52f1ec7ea8 = L.circleMarker(
+                [42.018809, -93.669924],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_529b85d2053da66e491d0ac8591e09c7);
+        
+    
+        var popup_c178e00ab7591ecf4319af7e7d50980f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c979e48740c3e24d418a09a3d40dcfd4 = $(`<div id="html_c979e48740c3e24d418a09a3d40dcfd4" style="width: 100.0%; height: 100.0%;">Neighborhood: Edwards<br>Sale Price: $130,000<br>Total Score: 4.20</div>`)[0];
+                popup_c178e00ab7591ecf4319af7e7d50980f.setContent(html_c979e48740c3e24d418a09a3d40dcfd4);
+            
+        
+
+        circle_marker_ff05d470cfd1eaff910c5c52f1ec7ea8.bindPopup(popup_c178e00ab7591ecf4319af7e7d50980f)
+        ;
+
+        
+    
+    
+            var circle_marker_bc0baee3e118393ee090c309e6102828 = L.circleMarker(
+                [42.042114, -93.622312],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_529b85d2053da66e491d0ac8591e09c7);
+        
+    
+        var popup_a98206792747800b0b64c20b8883ee8c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_51cd4d8989f77a6150c0570bee0059be = $(`<div id="html_51cd4d8989f77a6150c0570bee0059be" style="width: 100.0%; height: 100.0%;">Neighborhood: North_Ames<br>Sale Price: $145,000<br>Total Score: 4.00</div>`)[0];
+                popup_a98206792747800b0b64c20b8883ee8c.setContent(html_51cd4d8989f77a6150c0570bee0059be);
+            
+        
+
+        circle_marker_bc0baee3e118393ee090c309e6102828.bindPopup(popup_a98206792747800b0b64c20b8883ee8c)
+        ;
+
+        
+    
+    
+            var circle_marker_04ee50fcd3b1e2699cfc93bfb5d6860c = L.circleMarker(
+                [42.034561, -93.65921],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_529b85d2053da66e491d0ac8591e09c7);
+        
+    
+        var popup_886563678b1890717073e8dee0451b73 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ef7f3144a3c897bbbf902379ebcaed49 = $(`<div id="html_ef7f3144a3c897bbbf902379ebcaed49" style="width: 100.0%; height: 100.0%;">Neighborhood: Sawyer<br>Sale Price: $130,500<br>Total Score: 4.00</div>`)[0];
+                popup_886563678b1890717073e8dee0451b73.setContent(html_ef7f3144a3c897bbbf902379ebcaed49);
+            
+        
+
+        circle_marker_04ee50fcd3b1e2699cfc93bfb5d6860c.bindPopup(popup_886563678b1890717073e8dee0451b73)
+        ;
+
+        
+    
+    
+            var circle_marker_0c97a047fca7b0912518844374e34b3e = L.circleMarker(
+                [42.027227, -93.607058],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_529b85d2053da66e491d0ac8591e09c7);
+        
+    
+        var popup_c54fdc675bbf710d240118dc6bf8b333 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ca32126f44c58fd5a2909a7d5b5f737b = $(`<div id="html_ca32126f44c58fd5a2909a7d5b5f737b" style="width: 100.0%; height: 100.0%;">Neighborhood: Old_Town<br>Sale Price: $146,500<br>Total Score: 4.00</div>`)[0];
+                popup_c54fdc675bbf710d240118dc6bf8b333.setContent(html_ca32126f44c58fd5a2909a7d5b5f737b);
+            
+        
+
+        circle_marker_0c97a047fca7b0912518844374e34b3e.bindPopup(popup_c54fdc675bbf710d240118dc6bf8b333)
+        ;
+
+        
+    
+    
+            var circle_marker_101201d8f9a1556247985862272e7b77 = L.circleMarker(
+                [42.026548, -93.66798],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_529b85d2053da66e491d0ac8591e09c7);
+        
+    
+        var popup_3070af69e85b34da9ebd9e0499b9c878 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fb39a139d2862f2e664dd939e37ccb4f = $(`<div id="html_fb39a139d2862f2e664dd939e37ccb4f" style="width: 100.0%; height: 100.0%;">Neighborhood: Clear_Creek<br>Sale Price: $143,000<br>Total Score: 4.00</div>`)[0];
+                popup_3070af69e85b34da9ebd9e0499b9c878.setContent(html_fb39a139d2862f2e664dd939e37ccb4f);
+            
+        
+
+        circle_marker_101201d8f9a1556247985862272e7b77.bindPopup(popup_3070af69e85b34da9ebd9e0499b9c878)
+        ;
+
+        
+    
+</script>
+</html>
