@@ -5,6 +5,7 @@ sub_df = pd.read_csv("./data/houseprice/sample_submission.csv")
 # 이상치 탐색
 # house_train = house_train.query("GrLivArea <= 4500")
 
+## 회귀분석 적합(fit)하기
 # x = np.array(house_train[["GrLivArea", "GarageArea"]]).reshape(-1, 2) # reshape 하기 위해선 꼭 np.array() 실시
 # x = house_train["GrLivArea"] = 판다스 시리즈 (위에 칼럼 이름이 없음)
 # x = house_train[["GrLivArea"]] = 판다스 프레임 (칼럼이 생기고 밑에 사이즈 표시)
