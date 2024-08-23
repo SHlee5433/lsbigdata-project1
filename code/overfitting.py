@@ -182,6 +182,10 @@ test_df["x9"] = test_df["x"] ** 9
 
 test_df
 
+
+x=test_df[["x", "x2", "x3", "x4", "x5",
+           "x6", "x7", "x8", "x9"]]
+
 y_hat = model.predict(x)
 
 # 9차 모델 성능 : 0.89

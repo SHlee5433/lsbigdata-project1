@@ -15,18 +15,42 @@ house_train=pd.read_csv("./data/houseprice/train.csv")
 house_test=pd.read_csv("./data/houseprice/test.csv")
 sub_df=pd.read_csv("./data/houseprice/sample_submission.csv")
 
-## 이상치 탐색 (여기 넣으면 안됨!)
-# house_train=house_train.query("GrLivArea <= 4500")
+## NaN 채우기
+# 각 숫치형 변수는 평균 채우기
+# 각 범주형 변수는 Unknown 채우기
+house_train.isna().sum()
+house_test.isna().sum()
+
+## 숫자형 채우기
+quantitative = house_train.select_dtypes(include = [int, float])
+quantitative.isna().sum()
+quant_selected = quantitative.columns[quantitative.isna().sum() > 0]
+
+for col in quant_selected:
+    house_train[col].fillna(house_train[col].mean(), inplace=True)
+house_train[quant_selected].isna().sum()
+
+## 범주형 채우기
+qualitative = house_train.select_dtypes(include = [object])
+qualitative.isna().sum()
+qual_selected = qualitative.columns[qualitative.isna().sum() > 0]
+
+for col in qual_selected:
+    house_train[col].fillna("unknown", inplace=True)
+house_train[qual_selected].isna().sum()
 
 house_train.shape
 house_test.shape
 train_n=len(house_train)
 
 # 통합 df 만들기 + 더미코딩
+# house_test.select_dtypes(include=[int, float])
+
 df = pd.concat([house_train, house_test], ignore_index=True)
+# df.info()
 df = pd.get_dummies(
     df,
-    columns= ["Neighborhood"],
+    columns= df.select_dtypes(include=[object]).columns,
     drop_first=True
     )
 df
@@ -50,18 +74,18 @@ train_df=train_df.query("GrLivArea <= 4500")
 # x, y 나누기
 # regex (Regular Expression, 정규방정식)
 # ^ 시작을 의미, $ 끝남을 의미, | or를 의미
-selected_columns=train_df.filter(regex='^GrLivArea$|^GarageArea$|^Neighborhood_').columns
+# selected_columns=train_df.filter(regex='^GrLivArea$|^GarageArea$|^Neighborhood_').columns
 
 ## train
-train_x=train_df[selected_columns]
+train_x=train_df.drop("SalePrice", axis=1)
 train_y=train_df["SalePrice"]
 
 ## valid
-valid_x=valid_df[selected_columns]
+valid_x=valid_df.drop("SalePrice", axis=1)
 valid_y=valid_df["SalePrice"]
 
 ## test
-test_x=test_df[selected_columns]
+test_x=test_df.drop("SalePrice", axis=1)
 
 # 선형 회귀 모델 생성
 model = LinearRegression()
@@ -72,11 +96,6 @@ model.fit(train_x, train_y)  # 자동으로 기울기, 절편 값을 구해줌
 # 성능 측정 ()
 y_hat=model.predict(valid_x)
 np.sqrt(np.mean((valid_y-y_hat)**2))
-
-## test 셋 결측치 채우기
-test_x["GrLivArea"].isna().sum()
-test_x["GarageArea"].isna().sum()
-test_x=test_x.fillna(house_test["GarageArea"].mean())
 
 pred_y=model.predict(test_x) # test 셋에 대한 집값
 pred_y

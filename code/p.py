@@ -1,5 +1,5 @@
 import numpy as np
-from matplotlib.pyplot import plt
+import matplotlib.pyplot as plt
 
 # y = ax + b
 a = 7
@@ -82,7 +82,7 @@ model.fit(x, y)
 model.coef_
 model.intercept_
 
-k = np.linspace(-4, 4, 200)
+k = np.linspace(-4, 4, 200) # 선을 완벽한 곡선으로 그리기 위해
 
 df_k = pd.DataFrame({
     "x" : k, "x2" : k**2
@@ -94,4 +94,73 @@ reg_line = model.predict(df_k)
 plt.plot(k, reg_line, color = "red")
 plt.scatter(train_df["x"], train_df["y"], color = "blue")
 
+
+# 3차 회귀곡선
+train_df["x3"] = train_df["x"] ** 3
+
+x = train_df[["x", "x2", "x3"]]
+y = train_df["y"]
+
+model = LinearRegression()
+model.fit(x, y)
+
+model.coef_
+model.intercept_
+
+k = np.linspace(-4, 4, 200) # 선을 완벽한 곡선으로 그리기 위해
+
+df_k = pd.DataFrame({
+    "x" : k, "x2" : k**2, "x3" : k**3
+})
+df_k
+
+reg_line = model.predict(df_k)
+
+plt.plot(k, reg_line, color = "red")
+plt.scatter(train_df["x"], train_df["y"], color = "blue")
+
+# 9차 곡선 회귀
+train_df["x4"] = train_df["x"] ** 4
+train_df["x5"] = train_df["x"] ** 5
+train_df["x6"] = train_df["x"] ** 6
+train_df["x7"] = train_df["x"] ** 7
+train_df["x8"] = train_df["x"] ** 8
+train_df["x9"] = train_df["x"] ** 9
+train_df
+
+x = train_df[["x", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9"]]
+y = train_df["y"]
+
+model.fit(x, y)
+
+model.coef_
+model.intercept_
+
+k = np.linspace(-4, 4, 200)
+df_k = pd.DataFrame({
+    "x" : k, "x2" : k**2, "x3" : k**3, "x4" : k**4,
+    "x5" : k**5, "x6" : k**6, "x7" : k**7, "x8" : k**8, "x9" : k**9
+})
+df_k
+reg_line = model.predict(df_k)
+
+plt.plot(k, reg_line, color = "red")
+plt.scatter(train_df["x"], train_df["y"], color = "blue")
+
+
+test_df["x2"] = test_df["x"] ** 2
+test_df["x3"] = test_df["x"] ** 3
+test_df["x4"] = test_df["x"] ** 4
+test_df["x5"] = test_df["x"] ** 5
+test_df["x6"] = test_df["x"] ** 6
+test_df["x7"] = test_df["x"] ** 7
+test_df["x8"] = test_df["x"] ** 8
+test_df["x9"] = test_df["x"] ** 9
+
+test_df
+
+y_hat = model.predict(x)
+
+# 9차 모델 성능 : 0.89
+sum((test_df["y"] - y_hat) ** 2)
 
