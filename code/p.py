@@ -164,3 +164,5 @@ y_hat = model.predict(x)
 # 9차 모델 성능 : 0.89
 sum((test_df["y"] - y_hat) ** 2)
 
+# 20차 선형 회귀 곡선을 그려보자!
+
