@@ -111,39 +111,48 @@ model.fit(matX[:,1:], y)
 model.coef_
 model.intercept_
 
-# minimize로 베타 구하기
+# minimize로 라쏘 베타 구하기
 from scipy.optimize import minimize # 2개 이상 리스트만 받아서 최소 값을 추청
 
-def line_perform(beta) :
+def line_perform_lasso(beta) :
     beta = np.array(beta).reshape(3, 1)
     a = ( y - matX @ beta)
-    return (a.transpose() @ a)
+    return (a.transpose() @ a) + 3 * np.abs(beta).sum()
 
-line_perform([6, 1, 3])
+line_perform_lasso([8.55, 5.96, -4.38])
+line_perform_lasso([3.76, 1.36, 0])
 
 # 초기 추정값
-initial_guess = [0, 1, 0]
+initial_guess = ([0, 0, 0])
 
 # 최소값 찾기
-result = minimize(line_perform, initial_guess)
+result = minimize(line_perform_lasso, initial_guess)
 
 # 결과 출력
 print("최소값:", result.fun)
 print("최소값을 갖는 x 값:", result.x)
 
-# z = x^2 + y^2 + 3
-def my_f2(x) :
-    return x[0] ** 2 + x[1] ** 2 + 3
+# minimize로 릿지 베타 구하기
+from scipy.optimize import minimize # 2개 이상 리스트만 받아서 최소 값을 추청
 
-my_f2([1, 3])
+def line_perform_ridge(beta) :
+    beta = np.array(beta).reshape(3, 1)
+    a = ( y - matX @ beta)
+    return (a.transpose() @ a) + 3 * (beta**2).sum()
 
+line_perform_ridge([8.55, 5.96, -4.38])
+line_perform_ridge([3.76, 1.36, 0])
+line_perform_ridge([0.86, 0.91, 0.61])
 
 # 초기 추정값
-initial_guess = [-10, 3]
+initial_guess = ([0, 0, 0])
 
 # 최소값 찾기
-result = minimize(my_f2, initial_guess)
+result = minimize(line_perform_ridge, initial_guess)
 
 # 결과 출력
 print("최소값:", result.fun)
 print("최소값을 갖는 x 값:", result.x)
+
+
+
