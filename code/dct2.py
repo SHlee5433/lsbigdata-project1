@@ -37,23 +37,23 @@ X_train, X_test, y_train, y_test = train_test_split(X,
 
 # 디시전 트리 회귀 모델 생성 및 학습
 model = DecisionTreeRegressor(random_state=42,
-                              max_depth=4,
-                              min_sameple_split = 10) # 최적의 성능을 낼 수 있는 하이퍼 파라미터가 될 수 있다.
+                              max_depth=3,
+                              min_samples_split = 10) # 최적의 성능을 낼 수 있는 하이퍼 파라미터가 될 수 있다.
 model.fit(X_train, y_train)
 
 
-df_x=pd.DataFrame({"x": x})
+df_x = pd.DataFrame({"x": x}) # 왜 만들었어? 
 
 # -10, 10까지 데이터에 대한 예측
-y_pred = model.predict(df_x)
-
+y_pred = model.predict(X_test)
+y_pred2 = model.predict(df_x)
 
 plt.scatter(df['x'], df['y'], label='Noisy Data')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.title('Noisy Quadratic Data')
 plt.legend()
-plt.scatter(df_x['x'], y_pred, color="red")
+plt.scatter(df_x['x'], y_pred2, color="red")
 
 # 모델 평가
 mse = mean_squared_error(y_test, y_pred)
