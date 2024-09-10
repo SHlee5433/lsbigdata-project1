@@ -1,0 +1,106 @@
+---
+title: "퀄토 PPT 만들기"
+author: 이승학
+format: 
+    revealjs:
+        theme: moon
+        incremental: false
+        chalkboard: true
+---
+
+## 문제 1
+
+::: {.incremental}
+
+- Turn off alarm
+- Get out of bed
+
+:::
+
+## Going to sleep
+:::: {.columns}
+
+::: {.column width="40%"}
+
+- Get in bed
+- Count sheep
+
+:::
+
+::: {.column width="60%"}
+
+```{python}
+#| echo: true
+#| code-line-numbers: "4-7"
+import numpy as np                                  # <1>
+import matplotlib.pyplot as plt                     # <2>
+
+x = np.linspace(-4, 4, 100)
+y = x ** 2
+
+plt.plot(x, y)
+
+```
+1. 넘파이를 로드합니다.
+2. 그래프를 위한 matplotlib 로드
+:::
+
+::::
+
+
+## LS BIG DATA SHCOOL {.smaller}
+
+- 아이템 1
+- 아이템 2
+    - 서브 아이템 1
+    - 서브 아이템 2
+
+## 스크롤이 가능한 페이지 {.scrollable}
+
+- 아이템 1
+- 아이템 2
+    - 서브 아이템 1
+    - 서브 아이템 2
+- 아이템 3
+- 아이템 4
+    - 서브 아이템 1
+    - 서브 아이템 2
+- 아이템 5
+- 아이템 6
+    - 서브 아이템 1
+    - 서브 아이템 2
+
+## 풋노트 & Aside
+
+일반 문장^[풋노트는 다음과 같이
+표시됩니다.]은 다음과 같이 표시 됩니다.
+
+::: aside
+
+이 부분은 따로 떼어놓고 싶어요!
+
+:::
+
+---
+
+::: {.panel-tabset}
+
+### Tab A
+
+Content for `Tab A`
+
+### Tab B
+
+Content for `Tab B`
+
+:::
+
+## 새 슬라이드 {background-color="aquamarine"}
+
+## 슬라이드 네비게이션
+
+* Full 스크린: `f`키
+* 오버뷰 모드: `o`키, `ESC`키
+* 줌 인/아웃: `Alt` + 클릭
+* PDF 추출 모드 (스크롤해서 볼 수 있음): `e`키
+* 슬라이드 내용 찾는 법: `Ctrl` + `Shift` + `f`
