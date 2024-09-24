@@ -55,7 +55,7 @@ selected_columns = train_df.filter(regex = "^GrLivArea$|^GarageArea$|^Neighborho
 train_x = train_df[selected_columns]
 train_y = train_df["SalePrice"]
 
-valid_x = calied_df[selected_columns]
+valid_x = valid_df[selected_columns]
 valid_y = valid_df["SalePrice"]
 # 선형 회귀 모델 생성
 model = LinearRegression()

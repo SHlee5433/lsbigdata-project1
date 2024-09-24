@@ -38,6 +38,8 @@ for col in qual_selected:
     mode_value = house_train[col].mode()[0]  # 최빈값 계산
     house_train[col].fillna(mode_value, inplace=True)  # 최빈값으로 채우기
 
+### house_test 결측치 채우기
+
 ## 숫자형 채우기
 quantitative = house_test.select_dtypes(include = [int, float])
 quantitative.isna().sum()
