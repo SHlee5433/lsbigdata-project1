@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 #데이터 불러오기
 train =  pd.read_csv('../data/mart_train.csv') # (700,10)
 test =  pd.read_csv('../data/mart_test.csv') # (300,9)
